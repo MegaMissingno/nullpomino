@@ -35,24 +35,34 @@ public class DecayHistoryRandomizer extends Randomizer {
 			} while (pieces[id] == Piece.PIECE_O || pieces[id] == Piece.PIECE_Z || pieces[id] == Piece.PIECE_S);
 			firstPiece = false;
 		} else {
+                        /*System.out.print("History: ");
+                        for (int h = 0; h < history.length; h++) {
+                            System.out.print(Piece.PIECE_NAMES[history[h]]);
+                        }
+                        System.out.println();*/
+                        id = r.nextInt(pieces.length);
+                        //System.out.println("Roll 0: " + Piece.PIECE_NAMES[id]);
 			for (int i = history.length; i > 0 ; i--) {
-				id = r.nextInt(pieces.length);
 				boolean repeat = false;
-                                for (int k = 0; k < 1; k++) {
+                                for (int k = 0; k < i; k++) {
                                     if (pieces[id] == history[k]) {
                                         repeat = true;
+                                        //System.out.println("Rejected " + Piece.PIECE_NAMES[id]);
                                         break;
                                     }
                                 }
                                 if (!repeat) {
                                     break;
                                 }
+                                id = r.nextInt(pieces.length);
+                                //System.out.println("Roll " + (8-i) + ": " + Piece.PIECE_NAMES[id]);
 			}
 		}
 		for (int i = history.length - 1; i > 0; i--) {
 			history[i] = history[i-1];
 		}
 		history[0] = pieces[id];
+                System.out.println("Accepted " + Piece.PIECE_NAMES[id]);
 		return pieces[id];
 	}
 }
