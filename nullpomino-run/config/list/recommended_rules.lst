@@ -78,7 +78,7 @@ config/rule/Classic2.rul
 config/rule/Classic3.rul
 config/rule/StandardHard.rul
 
-:GRADE MANIA Remix
+:GRADE MANIA REMIX
 config/rule/ClassicRemix.rul
 config/rule/Classic2.rul
 config/rule/Classic3.rul

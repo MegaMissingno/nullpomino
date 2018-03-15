@@ -40,7 +40,7 @@ import mu.nu.nullpo.util.GeneralUtil;
 import org.apache.log4j.Logger;
 
 /**
- * GRADE MANIA 3 Mode
+ * GRADE MANIA REMIX Mode
  */
 public class GradeManiaRemixMode extends AbstractMode {
 	/** Log */
@@ -380,7 +380,7 @@ public class GradeManiaRemixMode extends AbstractMode {
 	 */
 	@Override
 	public String getName() {
-		return "GRADE MANIA 3";
+		return "GRADE MANIA REMIX";
 	}
 
 	/*
