@@ -41,3 +41,4 @@ mu.nu.nullpo.game.subsystem.mode.AvalancheVSSPFMode
 mu.nu.nullpo.game.subsystem.mode.PhysicianMode
 mu.nu.nullpo.game.subsystem.mode.PhysicianVSMode
 mu.nu.nullpo.game.subsystem.mode.SPFMode
+mu.nu.nullpo.game.subsystem.mode.GradeManiaRemixMode
