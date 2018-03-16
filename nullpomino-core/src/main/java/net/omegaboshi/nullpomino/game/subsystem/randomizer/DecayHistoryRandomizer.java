@@ -62,7 +62,7 @@ public class DecayHistoryRandomizer extends Randomizer {
 			history[i] = history[i-1];
 		}
 		history[0] = pieces[id];
-                System.out.println("Accepted " + Piece.PIECE_NAMES[id]);
+                //System.out.println("Accepted " + Piece.PIECE_NAMES[id]);
 		return pieces[id];
 	}
 }
