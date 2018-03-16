@@ -78,6 +78,12 @@ config/rule/Classic2.rul
 config/rule/Classic3.rul
 config/rule/StandardHard.rul
 
+:GRADE MANIA REMIX
+config/rule/ClassicRemix.rul
+config/rule/Classic2.rul
+config/rule/Classic3.rul
+config/rule/StandardHard.rul
+
 :SCORE ATTACK
 config/rule/Classic2.rul
 

@@ -16,4 +16,5 @@ net.omegaboshi.nullpomino.game.subsystem.randomizer.LinearDistWeightRandomizer
 net.omegaboshi.nullpomino.game.subsystem.randomizer.QuadraticDistWeightRandomizer
 net.omegaboshi.nullpomino.game.subsystem.randomizer.ExpDistWeightRandomizer
 net.omegaboshi.nullpomino.game.subsystem.randomizer.FixedSequenceRandomizer
+net.omegaboshi.nullpomino.game.subsystem.randomizer.DecayHistoryRandomizer
 

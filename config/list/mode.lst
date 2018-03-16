@@ -15,6 +15,7 @@ mu.nu.nullpo.game.subsystem.mode.RetroManiaMode
 mu.nu.nullpo.game.subsystem.mode.GradeManiaMode
 mu.nu.nullpo.game.subsystem.mode.GradeMania2Mode
 mu.nu.nullpo.game.subsystem.mode.GradeMania3Mode
+mu.nu.nullpo.game.subsystem.mode.GradeManiaRemixMode
 mu.nu.nullpo.game.subsystem.mode.ScoreAttackMode
 mu.nu.nullpo.game.subsystem.mode.SpeedManiaMode
 mu.nu.nullpo.game.subsystem.mode.SpeedMania2Mode
