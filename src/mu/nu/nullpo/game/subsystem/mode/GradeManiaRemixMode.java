@@ -72,19 +72,19 @@ public class GradeManiaRemixMode extends DummyMode {
         };
 
 	/** ARE table */
-	private static final int[] tableARE       = {23, 23, 23, 23, 23, 23, 23, 14, 10, 10};
+        private static final int[] tableARE       = {23, 23, 23, 23, 23, 23, 21, 18, 14, 10, 7,  4,  3,  2,  2};
 
 	/** ARE after line clear table */
-	private static final int[] tableARELine   = {23, 23, 23, 23, 23, 23, 14, 10,  4,  4};
+        private static final int[] tableARELine   = {23, 23, 23, 23, 23, 23, 17, 14, 10,  7,  4,  3,  2,  2,  1};
 
 	/** Line clear time table */
-	private static final int[] tableLineDelay = {40, 40, 40, 40, 40, 25, 16, 12,  6,  6};
+        private static final int[] tableLineDelay = {40, 40, 40, 40, 40, 40, 32, 24, 20, 16, 12, 10,  8,  6,  4};
 
 	/** Fixation time table */
-	private static final int[] tableLockDelay = {31, 31, 31, 31, 31, 31, 31, 31, 31, 18};
+	private static final int[] tableLockDelay = {41, 41, 41, 41, 41, 41, 41, 36, 31, 26, 21, 17, 15, 13, 11};
 
 	/** DAS table */
-	private static final int[] tableDAS       = {15, 15, 15, 15, 15,  9,  9,  9,  9,  7};
+        private static final int[] tableDAS       = {15, 15, 15, 15, 15,  9,  9,  9,  9,  7,  7,  7,  7,  5,  5};
 
 	/** BGM fadeout levels */
 	private static final int[] tableBGMFadeout = {495,695,880,-1};
@@ -148,7 +148,7 @@ public class GradeManiaRemixMode extends DummyMode {
 	private static final int RANKING_MAX = 10;
 
 	/** Number of sections */
-	private static final int SECTION_MAX = 10;
+	private static final int SECTION_MAX = 15;
 
 	/** Default section time */
 	private static final int DEFAULT_SECTION_TIME = 7200;
@@ -668,7 +668,7 @@ public class GradeManiaRemixMode extends DummyMode {
 
 		nextseclv = engine.statistics.level + 100;
 		if(engine.statistics.level < 0) nextseclv = 100;
-		if(engine.statistics.level >= 900) nextseclv = 999;
+		if(engine.statistics.level >= 1400) nextseclv = 1500;
 
 		owner.backgroundStatus.bg = engine.statistics.level / 100;
 
@@ -736,23 +736,23 @@ public class GradeManiaRemixMode extends DummyMode {
 
 					int totalTime = 0;
 					for(int i = 0; i < SECTION_MAX; i++) {
-						int temp = Math.min(i * 100, 999);
-						int temp2 = Math.min(((i + 1) * 100) - 1, 999);
+                                                int temp = i * 100;
+						int temp2 = ((i + 1) * 100) - 1;
 
 						String strSectionTime;
-						strSectionTime = String.format("%3d-%3d %s", temp, temp2, GeneralUtil.getTime(bestSectionTime[i]));
+						strSectionTime = String.format("%4d-%4d %s", temp, temp2, GeneralUtil.getTime(bestSectionTime[i]));
 
 						receiver.drawScoreFont(engine, playerID, 0, 3 + i, strSectionTime, sectionIsNewRecord[i]);
 
 						totalTime += bestSectionTime[i];
 					}
 
-					receiver.drawScoreFont(engine, playerID, 0, 14, "TOTAL", EventReceiver.COLOR_BLUE);
-					receiver.drawScoreFont(engine, playerID, 0, 15, GeneralUtil.getTime(totalTime));
-					receiver.drawScoreFont(engine, playerID, 9, 14, "AVERAGE", EventReceiver.COLOR_BLUE);
-					receiver.drawScoreFont(engine, playerID, 9, 15, GeneralUtil.getTime(totalTime / SECTION_MAX));
+					receiver.drawScoreFont(engine, playerID, 0, 19, "TOTAL", EventReceiver.COLOR_BLUE);
+					receiver.drawScoreFont(engine, playerID, 0, 20, GeneralUtil.getTime(totalTime));
+					receiver.drawScoreFont(engine, playerID, 9, 19, "AVERAGE", EventReceiver.COLOR_BLUE);
+					receiver.drawScoreFont(engine, playerID, 9, 20, GeneralUtil.getTime(totalTime / SECTION_MAX));
 
-					receiver.drawScoreFont(engine, playerID, 0, 17, "F:VIEW RANKING", EventReceiver.COLOR_GREEN);
+					receiver.drawScoreFont(engine, playerID, 0, 22, "F:VIEW RANKING", EventReceiver.COLOR_GREEN);
 				}
 			}
 		} else {
@@ -813,14 +813,13 @@ public class GradeManiaRemixMode extends DummyMode {
 				for(int i = 0; i < sectiontime.length; i++) {
 					if(sectiontime[i] > 0) {
 						int temp = i * 100;
-						if(temp > 999) temp = 999;
 
 						int section = engine.statistics.level / 100;
 						String strSeparator = " ";
 						if((i == section) && (engine.ending == 0)) strSeparator = "b";
 
 						String strSectionTime;
-						strSectionTime = String.format("%3d%s%s", temp, strSeparator, GeneralUtil.getTime(sectiontime[i]));
+						strSectionTime = String.format("%4d%s%s", temp, strSeparator, GeneralUtil.getTime(sectiontime[i]));
 
 						receiver.drawScoreFont(engine, playerID, x, 3 + i, strSectionTime, sectionIsNewRecord[i]);
 					}
@@ -1077,13 +1076,14 @@ public class GradeManiaRemixMode extends DummyMode {
                         int levelplus = lines;
 			if(lines == 3) levelplus = 4;
 			if(lines >= 4) levelplus = 6;
+                        if(engine.field.isEmpty()) levelplus = 10;
                         
 			engine.statistics.level += levelplus;
 			levelUp(engine);
 
-			if(engine.statistics.level >= 999) {
+			if(engine.statistics.level >= 1500) {
 				// Ending
-				engine.statistics.level = 999;
+				engine.statistics.level = 1500;
 				engine.timerActive = false;
 				engine.ending = 1;
 				rollclear = 1;
@@ -1139,7 +1139,6 @@ public class GradeManiaRemixMode extends DummyMode {
 
 				// Update level for next section
 				nextseclv += 100;
-				if(nextseclv > 999) nextseclv = 999;
 			} else if((engine.statistics.level == nextseclv - 1) && (lvstopse == true)) {
 				engine.playSE("levelstop");
 			}
